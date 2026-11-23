@@ -1,0 +1,12 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "python scripts/download_runtime.py",
+  "functions": {
+    "api/index.py": {
+      "maxDuration": 60,
+      "includeFiles": "{src/**,artifacts/pretrained/serving/**,.cache/face_detector/**,reports/pretrained/evaluation/**,reports/pretrained/face_pipeline_validation.json}",
+      "excludeFiles": "{tests/**,data/**,docs/**,output/**,reports/pretrained/figures_two_seed/**,**/__pycache__/**}"
+    }
+  },
+  "rewrites": [{"source": "/(.*)", "destination": "/api/index.py"}]
+}

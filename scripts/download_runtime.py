@@ -3,7 +3,11 @@ import hashlib
 import json
 import urllib.request
 import zipfile
+import sys
 from pathlib import Path
+if sys.platform == 'win32':
+    import truststore
+    truststore.inject_into_ssl()
 ROOT = Path(__file__).resolve().parents[1]
 
 

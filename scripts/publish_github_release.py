@@ -11,6 +11,11 @@ import subprocess
 import urllib.error
 import urllib.parse
 import urllib.request
+import sys
+
+if sys.platform == 'win32':
+    import truststore
+    truststore.inject_into_ssl()
 
 REPOSITORY = 'GinnoLmao/VisAge'
 
