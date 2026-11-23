@@ -50,7 +50,7 @@ def load_compact_record(path, kind):
             record["metrics"] = {name: {key: value[key] for key in ("ap_percent", "iou_threshold", "ground_truth_faces")}
                 | compact_curve(value, "recall", "precision")
                 | ({"froc": compact_curve(value, "false_positives_per_image", "recall")}
-                   if "false_positives_per_image" in value else {})
+                   if "false_positives_per_image" in value else ({"froc": value["froc"]} if "froc" in value else {}))
                 for name, value in record["metrics"].items()}
         else:
             raise ValueError("Unknown aggregate evaluation record kind.")

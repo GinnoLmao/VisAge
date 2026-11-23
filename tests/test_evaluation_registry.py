@@ -112,6 +112,11 @@ def test_detection_cache_preserves_a_bounded_froc_curve(tmp_path):
     assert value["froc"]["full_points"] == 2000
     assert value["froc"]["false_positives_per_image"][0] == 0
     assert value["froc"]["false_positives_per_image"][-1] == 1999
+    compact = load_compact_record(path, "detection")
+    restored = tmp_path / "compact_detection.json"
+    restored.write_text(json.dumps(compact))
+    again = load_compact_record(restored, "detection")["metrics"]["AP50"]
+    assert again["froc"] == value["froc"] and again["ap_percent"] == value["ap_percent"]
 
 
 def test_replaced_disk_artifacts_cannot_relabel_metrics_for_a_loaded_model(tmp_path):

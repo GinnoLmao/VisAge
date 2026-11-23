@@ -42,6 +42,7 @@ def main():
                 models=client.get('/v1/models');models.raise_for_status();models=models.json();assert models['default_method']=='swinv2_tiny'
                 evaluation=client.get('/v1/evaluation');evaluation.raise_for_status();evaluation=evaluation.json()
                 for value in evaluation['classification']['methods'].values():assert value['runtime_median_ms']>0 and value['parameters_millions']>0 and value['training_minutes']>0
+                assert len(evaluation['detection']['metrics']['AP50']['froc']['recall']) > 1
                 fixture=ROOT/'.cache/web_qa/single.jpg'
                 predicted=client.post('/v1/predict?method=all&face_index=0',content=fixture.read_bytes(),headers={'Content-Type':'image/jpeg'});predicted.raise_for_status();predicted=predicted.json()
                 baseline=json.loads((ROOT/'reports/pretrained/score_feature/live_scores.json').read_text())
