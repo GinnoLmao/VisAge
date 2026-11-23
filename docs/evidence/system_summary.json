@@ -1,0 +1,951 @@
+{
+  "report_date": "2026-11-23 Asia/Manila",
+  "completed_runs": 6,
+  "seeds": [
+    42,
+    43
+  ],
+  "serving_seed": 42,
+  "default_method": "swinv2_tiny",
+  "validation_means": {
+    "convnextv2_nano": {
+      "macro_f1_mean": 0.8319523148134873,
+      "macro_f1_std_sample": 0.027299192633982502,
+      "accuracy_mean": 0.8854524627720504,
+      "under18_older_mean": 0.19808306709265175,
+      "senior_recall_mean": 0.7569620253164557,
+      "cpu_median_ms": 58.854400005657226
+    },
+    "efficientnetv2_s": {
+      "macro_f1_mean": 0.879924988121118,
+      "macro_f1_std_sample": 0.002535987784195378,
+      "accuracy_mean": 0.9191008018327605,
+      "under18_older_mean": 0.11741214057507987,
+      "senior_recall_mean": 0.8037974683544304,
+      "cpu_median_ms": 68.07020000997
+    },
+    "swinv2_tiny": {
+      "macro_f1_mean": 0.8836830750571317,
+      "macro_f1_std_sample": 0.010222577182745966,
+      "accuracy_mean": 0.9212485681557847,
+      "under18_older_mean": 0.1134185303514377,
+      "senior_recall_mean": 0.8253164556962025,
+      "cpu_median_ms": 97.63455000938848
+    }
+  },
+  "serving_validation": {
+    "swinv2_tiny": {
+      "samples": 3492,
+      "accuracy": 0.9269759450171822,
+      "macro_f1": 0.8909115287042543,
+      "confusion_matrix": [
+        [
+          561,
+          65,
+          0
+        ],
+        [
+          31,
+          2352,
+          88
+        ],
+        [
+          0,
+          71,
+          324
+        ]
+      ],
+      "row_normalized_confusion_matrix": [
+        [
+          0.8961661341853036,
+          0.10383386581469649,
+          0.0
+        ],
+        [
+          0.01254552812626467,
+          0.9518413597733711,
+          0.035613112100364226
+        ],
+        [
+          0.0,
+          0.17974683544303796,
+          0.8202531645569621
+        ]
+      ],
+      "per_class": [
+        {
+          "label": 0,
+          "name": "Under 18",
+          "support": 626,
+          "precision": 0.9476351351351351,
+          "recall": 0.8961661341853036,
+          "f1": 0.9211822660098522
+        },
+        {
+          "label": 1,
+          "name": "18-59",
+          "support": 2471,
+          "precision": 0.9453376205787781,
+          "recall": 0.9518413597733711,
+          "f1": 0.9485783424077435
+        },
+        {
+          "label": 2,
+          "name": "60+",
+          "support": 395,
+          "precision": 0.7864077669902912,
+          "recall": 0.8202531645569621,
+          "f1": 0.8029739776951673
+        }
+      ],
+      "under18_predicted_older_rate": 0.10383386581469649,
+      "senior_predicted_below60_rate": 0.17974683544303796,
+      "non_senior_predicted_senior_rate": 0.028414594769131416,
+      "weighted_f1": 0.9271969942157197
+    },
+    "convnextv2_nano": {
+      "samples": 3492,
+      "accuracy": 0.8688430698739977,
+      "macro_f1": 0.8126488705810804,
+      "confusion_matrix": [
+        [
+          479,
+          140,
+          7
+        ],
+        [
+          66,
+          2244,
+          161
+        ],
+        [
+          1,
+          83,
+          311
+        ]
+      ],
+      "row_normalized_confusion_matrix": [
+        [
+          0.7651757188498403,
+          0.22364217252396165,
+          0.011182108626198083
+        ],
+        [
+          0.026709834075273168,
+          0.9081343585592877,
+          0.06515580736543909
+        ],
+        [
+          0.002531645569620253,
+          0.21012658227848102,
+          0.7873417721518987
+        ]
+      ],
+      "per_class": [
+        {
+          "label": 0,
+          "name": "Under 18",
+          "support": 626,
+          "precision": 0.8772893772893773,
+          "recall": 0.7651757188498403,
+          "f1": 0.81740614334471
+        },
+        {
+          "label": 1,
+          "name": "18-59",
+          "support": 2471,
+          "precision": 0.9096068098905553,
+          "recall": 0.9081343585592877,
+          "f1": 0.9088699878493317
+        },
+        {
+          "label": 2,
+          "name": "60+",
+          "support": 395,
+          "precision": 0.6492693110647182,
+          "recall": 0.7873417721518987,
+          "f1": 0.7116704805491991
+        }
+      ],
+      "under18_predicted_older_rate": 0.23482428115015974,
+      "senior_predicted_below60_rate": 0.21265822784810126,
+      "non_senior_predicted_senior_rate": 0.05424604455925089,
+      "weighted_f1": 0.8701671894405557
+    },
+    "efficientnetv2_s": {
+      "samples": 3492,
+      "accuracy": 0.9206758304696449,
+      "macro_f1": 0.8817182022803288,
+      "confusion_matrix": [
+        [
+          552,
+          74,
+          0
+        ],
+        [
+          40,
+          2348,
+          83
+        ],
+        [
+          0,
+          80,
+          315
+        ]
+      ],
+      "row_normalized_confusion_matrix": [
+        [
+          0.8817891373801917,
+          0.1182108626198083,
+          0.0
+        ],
+        [
+          0.016187778227438283,
+          0.9502225819506273,
+          0.03358963982193444
+        ],
+        [
+          0.0,
+          0.20253164556962025,
+          0.7974683544303798
+        ]
+      ],
+      "per_class": [
+        {
+          "label": 0,
+          "name": "Under 18",
+          "support": 626,
+          "precision": 0.9324324324324325,
+          "recall": 0.8817891373801917,
+          "f1": 0.9064039408866996
+        },
+        {
+          "label": 1,
+          "name": "18-59",
+          "support": 2471,
+          "precision": 0.938449240607514,
+          "recall": 0.9502225819506273,
+          "f1": 0.9442992157651318
+        },
+        {
+          "label": 2,
+          "name": "60+",
+          "support": 395,
+          "precision": 0.7914572864321608,
+          "recall": 0.7974683544303798,
+          "f1": 0.7944514501891552
+        }
+      ],
+      "under18_predicted_older_rate": 0.1182108626198083,
+      "senior_predicted_below60_rate": 0.20253164556962025,
+      "non_senior_predicted_senior_rate": 0.02680012915724895,
+      "weighted_f1": 0.920555713624121
+    }
+  },
+  "existing_test": {
+    "swinv2_tiny": {
+      "samples": 3493,
+      "accuracy": 0.9258517034068137,
+      "macro_f1": 0.8829873327494214,
+      "confusion_matrix": [
+        [
+          572,
+          54,
+          1
+        ],
+        [
+          24,
+          2367,
+          80
+        ],
+        [
+          0,
+          100,
+          295
+        ]
+      ],
+      "row_normalized_confusion_matrix": [
+        [
+          0.9122807017543859,
+          0.0861244019138756,
+          0.001594896331738437
+        ],
+        [
+          0.00971266693646297,
+          0.9579117766086604,
+          0.03237555645487657
+        ],
+        [
+          0.0,
+          0.25316455696202533,
+          0.7468354430379747
+        ]
+      ],
+      "per_class": [
+        {
+          "label": 0,
+          "name": "Under 18",
+          "support": 627,
+          "precision": 0.959731543624161,
+          "recall": 0.9122807017543859,
+          "f1": 0.9354047424366312
+        },
+        {
+          "label": 1,
+          "name": "18-59",
+          "support": 2471,
+          "precision": 0.9389131297104324,
+          "recall": 0.9579117766086604,
+          "f1": 0.9483173076923078
+        },
+        {
+          "label": 2,
+          "name": "60+",
+          "support": 395,
+          "precision": 0.7845744680851063,
+          "recall": 0.7468354430379747,
+          "f1": 0.7652399481193255
+        }
+      ],
+      "under18_predicted_older_rate": 0.08771929824561403,
+      "senior_predicted_below60_rate": 0.25316455696202533,
+      "non_senior_predicted_senior_rate": 0.026145900581020013,
+      "weighted_f1": 0.9252964844897207
+    },
+    "convnextv2_nano": {
+      "samples": 3493,
+      "accuracy": 0.8519896936730604,
+      "macro_f1": 0.7873779584329901,
+      "confusion_matrix": [
+        [
+          495,
+          127,
+          5
+        ],
+        [
+          75,
+          2200,
+          196
+        ],
+        [
+          3,
+          111,
+          281
+        ]
+      ],
+      "row_normalized_confusion_matrix": [
+        [
+          0.7894736842105263,
+          0.2025518341307815,
+          0.007974481658692184
+        ],
+        [
+          0.030352084176446782,
+          0.8903278025091056,
+          0.07932011331444759
+        ],
+        [
+          0.007594936708860759,
+          0.2810126582278481,
+          0.7113924050632912
+        ]
+      ],
+      "per_class": [
+        {
+          "label": 0,
+          "name": "Under 18",
+          "support": 627,
+          "precision": 0.8638743455497382,
+          "recall": 0.7894736842105263,
+          "f1": 0.8250000000000001
+        },
+        {
+          "label": 1,
+          "name": "18-59",
+          "support": 2471,
+          "precision": 0.9023789991796555,
+          "recall": 0.8903278025091056,
+          "f1": 0.8963128946832348
+        },
+        {
+          "label": 2,
+          "name": "60+",
+          "support": 395,
+          "precision": 0.58298755186722,
+          "recall": 0.7113924050632912,
+          "f1": 0.6408209806157356
+        }
+      ],
+      "under18_predicted_older_rate": 0.21052631578947367,
+      "senior_predicted_below60_rate": 0.28860759493670884,
+      "non_senior_predicted_senior_rate": 0.06488056810845706,
+      "weighted_f1": 0.8546202261968191
+    },
+    "efficientnetv2_s": {
+      "samples": 3493,
+      "accuracy": 0.9206985399370169,
+      "macro_f1": 0.8728048328346284,
+      "confusion_matrix": [
+        [
+          565,
+          61,
+          1
+        ],
+        [
+          15,
+          2369,
+          87
+        ],
+        [
+          0,
+          113,
+          282
+        ]
+      ],
+      "row_normalized_confusion_matrix": [
+        [
+          0.9011164274322169,
+          0.09728867623604466,
+          0.001594896331738437
+        ],
+        [
+          0.006070416835289356,
+          0.9587211655200324,
+          0.03520841764467827
+        ],
+        [
+          0.0,
+          0.28607594936708863,
+          0.7139240506329114
+        ]
+      ],
+      "per_class": [
+        {
+          "label": 0,
+          "name": "Under 18",
+          "support": 627,
+          "precision": 0.9741379310344828,
+          "recall": 0.9011164274322169,
+          "f1": 0.936205468102734
+        },
+        {
+          "label": 1,
+          "name": "18-59",
+          "support": 2471,
+          "precision": 0.9315768777034998,
+          "recall": 0.9587211655200324,
+          "f1": 0.944954128440367
+        },
+        {
+          "label": 2,
+          "name": "60+",
+          "support": 395,
+          "precision": 0.7621621621621621,
+          "recall": 0.7139240506329114,
+          "f1": 0.7372549019607844
+        }
+      ],
+      "under18_predicted_older_rate": 0.09888357256778309,
+      "senior_predicted_below60_rate": 0.28607594936708863,
+      "non_senior_predicted_senior_rate": 0.028405422853453842,
+      "weighted_f1": 0.9198964117237535
+    }
+  },
+  "pipeline": {
+    "attempted": 3492,
+    "accepted": 3482,
+    "coverage": 0.9971363115693013,
+    "methods": {
+      "convnextv2_nano": {
+        "accepted_image_metrics": {
+          "samples": 3482,
+          "accuracy": 0.8650201033888569,
+          "macro_f1": 0.804562376422163,
+          "confusion_matrix": [
+            [
+              474,
+              146,
+              5
+            ],
+            [
+              66,
+              2245,
+              153
+            ],
+            [
+              1,
+              99,
+              293
+            ]
+          ],
+          "row_normalized_confusion_matrix": [
+            [
+              0.7584,
+              0.2336,
+              0.008
+            ],
+            [
+              0.026785714285714284,
+              0.9111201298701299,
+              0.06209415584415585
+            ],
+            [
+              0.002544529262086514,
+              0.25190839694656486,
+              0.7455470737913485
+            ]
+          ],
+          "per_class": [
+            {
+              "label": 0,
+              "name": "Under 18",
+              "support": 625,
+              "precision": 0.8761552680221811,
+              "recall": 0.7584,
+              "f1": 0.8130360205831904
+            },
+            {
+              "label": 1,
+              "name": "18-59",
+              "support": 2464,
+              "precision": 0.9016064257028112,
+              "recall": 0.9111201298701299,
+              "f1": 0.9063383124747679
+            },
+            {
+              "label": 2,
+              "name": "60+",
+              "support": 393,
+              "precision": 0.6496674057649667,
+              "recall": 0.7455470737913485,
+              "f1": 0.6943127962085308
+            }
+          ],
+          "under18_predicted_older_rate": 0.2416,
+          "senior_predicted_below60_rate": 0.2544529262086514,
+          "non_senior_predicted_senior_rate": 0.051149239235998706
+        },
+        "end_to_end_correct_count": 3012,
+        "end_to_end_correct_rate": 0.8625429553264605,
+        "original_aligned_metrics_same_accepted_images": {
+          "samples": 3482,
+          "accuracy": 0.8687535898908674,
+          "macro_f1": 0.8124148206576135,
+          "confusion_matrix": [
+            [
+              479,
+              139,
+              7
+            ],
+            [
+              66,
+              2237,
+              161
+            ],
+            [
+              1,
+              83,
+              309
+            ]
+          ],
+          "row_normalized_confusion_matrix": [
+            [
+              0.7664,
+              0.2224,
+              0.0112
+            ],
+            [
+              0.026785714285714284,
+              0.9078733766233766,
+              0.06534090909090909
+            ],
+            [
+              0.002544529262086514,
+              0.21119592875318066,
+              0.7862595419847328
+            ]
+          ],
+          "per_class": [
+            {
+              "label": 0,
+              "name": "Under 18",
+              "support": 625,
+              "precision": 0.8772893772893773,
+              "recall": 0.7664,
+              "f1": 0.8181041844577284
+            },
+            {
+              "label": 1,
+              "name": "18-59",
+              "support": 2464,
+              "precision": 0.9097193981293209,
+              "recall": 0.9078733766233766,
+              "f1": 0.9087954499289053
+            },
+            {
+              "label": 2,
+              "name": "60+",
+              "support": 393,
+              "precision": 0.6477987421383647,
+              "recall": 0.7862595419847328,
+              "f1": 0.7103448275862069
+            }
+          ],
+          "under18_predicted_older_rate": 0.2336,
+          "senior_predicted_below60_rate": 0.21374045801526717,
+          "non_senior_predicted_senior_rate": 0.05438653285853027
+        },
+        "prediction_changes_on_accepted": 169
+      },
+      "efficientnetv2_s": {
+        "accepted_image_metrics": {
+          "samples": 3482,
+          "accuracy": 0.9149913842619184,
+          "macro_f1": 0.8727739867604232,
+          "confusion_matrix": [
+            [
+              554,
+              71,
+              0
+            ],
+            [
+              41,
+              2323,
+              100
+            ],
+            [
+              1,
+              83,
+              309
+            ]
+          ],
+          "row_normalized_confusion_matrix": [
+            [
+              0.8864,
+              0.1136,
+              0.0
+            ],
+            [
+              0.016639610389610388,
+              0.942775974025974,
+              0.040584415584415584
+            ],
+            [
+              0.002544529262086514,
+              0.21119592875318066,
+              0.7862595419847328
+            ]
+          ],
+          "per_class": [
+            {
+              "label": 0,
+              "name": "Under 18",
+              "support": 625,
+              "precision": 0.9295302013422819,
+              "recall": 0.8864,
+              "f1": 0.9074529074529075
+            },
+            {
+              "label": 1,
+              "name": "18-59",
+              "support": 2464,
+              "precision": 0.9378280177634235,
+              "recall": 0.942775974025974,
+              "f1": 0.9402954867435741
+            },
+            {
+              "label": 2,
+              "name": "60+",
+              "support": 393,
+              "precision": 0.7555012224938875,
+              "recall": 0.7862595419847328,
+              "f1": 0.770573566084788
+            }
+          ],
+          "under18_predicted_older_rate": 0.1136,
+          "senior_predicted_below60_rate": 0.21374045801526717,
+          "non_senior_predicted_senior_rate": 0.03237293622531564
+        },
+        "end_to_end_correct_count": 3186,
+        "end_to_end_correct_rate": 0.9123711340206185,
+        "original_aligned_metrics_same_accepted_images": {
+          "samples": 3482,
+          "accuracy": 0.9207352096496266,
+          "macro_f1": 0.8816301658102104,
+          "confusion_matrix": [
+            [
+              552,
+              73,
+              0
+            ],
+            [
+              40,
+              2341,
+              83
+            ],
+            [
+              0,
+              80,
+              313
+            ]
+          ],
+          "row_normalized_confusion_matrix": [
+            [
+              0.8832,
+              0.1168,
+              0.0
+            ],
+            [
+              0.016233766233766232,
+              0.9500811688311688,
+              0.033685064935064936
+            ],
+            [
+              0.0,
+              0.2035623409669211,
+              0.7964376590330788
+            ]
+          ],
+          "per_class": [
+            {
+              "label": 0,
+              "name": "Under 18",
+              "support": 625,
+              "precision": 0.9324324324324325,
+              "recall": 0.8832,
+              "f1": 0.9071487263763353
+            },
+            {
+              "label": 1,
+              "name": "18-59",
+              "support": 2464,
+              "precision": 0.9386527666399358,
+              "recall": 0.9500811688311688,
+              "f1": 0.9443323920935861
+            },
+            {
+              "label": 2,
+              "name": "60+",
+              "support": 393,
+              "precision": 0.7904040404040404,
+              "recall": 0.7964376590330788,
+              "f1": 0.7934093789607097
+            }
+          ],
+          "under18_predicted_older_rate": 0.1168,
+          "senior_predicted_below60_rate": 0.2035623409669211,
+          "non_senior_predicted_senior_rate": 0.026869537067011978
+        },
+        "prediction_changes_on_accepted": 97
+      },
+      "swinv2_tiny": {
+        "accepted_image_metrics": {
+          "samples": 3482,
+          "accuracy": 0.9184376794945434,
+          "macro_f1": 0.8795556329074761,
+          "confusion_matrix": [
+            [
+              547,
+              78,
+              0
+            ],
+            [
+              33,
+              2329,
+              102
+            ],
+            [
+              0,
+              71,
+              322
+            ]
+          ],
+          "row_normalized_confusion_matrix": [
+            [
+              0.8752,
+              0.1248,
+              0.0
+            ],
+            [
+              0.013392857142857142,
+              0.945211038961039,
+              0.041396103896103896
+            ],
+            [
+              0.0,
+              0.1806615776081425,
+              0.8193384223918575
+            ]
+          ],
+          "per_class": [
+            {
+              "label": 0,
+              "name": "Under 18",
+              "support": 625,
+              "precision": 0.9431034482758621,
+              "recall": 0.8752,
+              "f1": 0.907883817427386
+            },
+            {
+              "label": 1,
+              "name": "18-59",
+              "support": 2464,
+              "precision": 0.9398708635996772,
+              "recall": 0.945211038961039,
+              "f1": 0.9425333872925941
+            },
+            {
+              "label": 2,
+              "name": "60+",
+              "support": 393,
+              "precision": 0.7594339622641509,
+              "recall": 0.8193384223918575,
+              "f1": 0.788249694002448
+            }
+          ],
+          "under18_predicted_older_rate": 0.1248,
+          "senior_predicted_below60_rate": 0.1806615776081425,
+          "non_senior_predicted_senior_rate": 0.03302039494982195
+        },
+        "end_to_end_correct_count": 3198,
+        "end_to_end_correct_rate": 0.915807560137457,
+        "original_aligned_metrics_same_accepted_images": {
+          "samples": 3482,
+          "accuracy": 0.9270534175761057,
+          "macro_f1": 0.8908521060767827,
+          "confusion_matrix": [
+            [
+              561,
+              64,
+              0
+            ],
+            [
+              31,
+              2345,
+              88
+            ],
+            [
+              0,
+              71,
+              322
+            ]
+          ],
+          "row_normalized_confusion_matrix": [
+            [
+              0.8976,
+              0.1024,
+              0.0
+            ],
+            [
+              0.012581168831168832,
+              0.9517045454545454,
+              0.03571428571428571
+            ],
+            [
+              0.0,
+              0.1806615776081425,
+              0.8193384223918575
+            ]
+          ],
+          "per_class": [
+            {
+              "label": 0,
+              "name": "Under 18",
+              "support": 625,
+              "precision": 0.9476351351351351,
+              "recall": 0.8976,
+              "f1": 0.9219391947411667
+            },
+            {
+              "label": 1,
+              "name": "18-59",
+              "support": 2464,
+              "precision": 0.9455645161290323,
+              "recall": 0.9517045454545454,
+              "f1": 0.9486245954692557
+            },
+            {
+              "label": 2,
+              "name": "60+",
+              "support": 393,
+              "precision": 0.7853658536585366,
+              "recall": 0.8193384223918575,
+              "f1": 0.8019925280199254
+            }
+          ],
+          "under18_predicted_older_rate": 0.1024,
+          "senior_predicted_below60_rate": 0.1806615776081425,
+          "non_senior_predicted_senior_rate": 0.02848818387827776
+        },
+        "prediction_changes_on_accepted": 76
+      }
+    }
+  },
+  "cost": {
+    "convnextv2_nano": {
+      "artifact_sha256": "d5df24c51c78d7e7ad67693c6d746ca40941436cbdd664b4bf2b35950c5c07ac",
+      "parameters": 14984723,
+      "training_seconds": 1472.1144523000112,
+      "training_run_id": "convnextv2_nano_full_seed42",
+      "training_epochs": 8,
+      "runtime_median_ms": 62.38024999038316,
+      "runtime_p95_ms": 86.31333498633467
+    },
+    "efficientnetv2_s": {
+      "artifact_sha256": "1b80b0c08dd756ba5a2c44e712e9985114c903fea69e3e8799e26f5829c4dd08",
+      "parameters": 20181331,
+      "training_seconds": 3132.2735083000152,
+      "training_run_id": "efficientnetv2_s_full_seed42",
+      "training_epochs": 24,
+      "runtime_median_ms": 70.08540001697838,
+      "runtime_p95_ms": 87.48002000211271
+    },
+    "swinv2_tiny": {
+      "artifact_sha256": "482b448303778cf2f9878f6428cf8d0261f26c354f4c245fb975f2b5e0a751ee",
+      "parameters": 27580461,
+      "training_seconds": 2179.1899054000096,
+      "training_run_id": "swinv2_tiny_full_seed42",
+      "training_epochs": 10,
+      "runtime_median_ms": 104.30679999990389,
+      "runtime_p95_ms": 128.23252002417576
+    }
+  },
+  "acceptance": {
+    "tests_full.xml": 302,
+    "tests_javascript.xml": 28
+  },
+  "browser_assertions": 46,
+  "delivery": {
+    "bytes": 236296175,
+    "sha256": "2566c4e6d5a68056303094a89a28094442ab05ed2a44a67f215bc8ab0b044a43",
+    "files": 240
+  },
+  "hosting": {
+    "recorded_utc": "2026-11-23T01:49:59.112653+00:00",
+    "github": {
+      "repository": "https://github.com/GinnoLmao/VisAge",
+      "visibility": "public",
+      "published": true,
+      "release": "https://github.com/GinnoLmao/VisAge/releases/tag/v0.4.0"
+    },
+    "github_pages": {
+      "status": "verified_live_documentation_portal",
+      "url": "https://ginnolmao.github.io/VisAge/",
+      "http_status": 200
+    },
+    "vercel": {
+      "status": "awaiting_user_team_authorization",
+      "team": "ginnolmaos-projects",
+      "api_status": 403,
+      "hosted_inference_verified": false,
+      "configuration_prepared": true,
+      "user_requested": "Explain the authorization steps after completing the PDF."
+    },
+    "local_app": {
+      "url": "http://127.0.0.1:8000",
+      "verified": true
+    },
+    "pilot": "Excluded by user; no independent pilot result claimed."
+  },
+  "pilot": "excluded_by_user"
+}

@@ -7,6 +7,7 @@ import {randomUUID} from 'node:crypto';
 const root = process.cwd(), base = process.argv[2] || 'http://127.0.0.1:8041';
 if (!/^http:\/\/127\.0\.0\.1:\d+$/.test(base)) throw Error('Local QA origin required');
 const folder = resolve(root, process.argv[3] || 'reports/pretrained/web_app/screenshots');
+const reportMode = process.argv.includes('--report');
 await mkdir(folder, {recursive:true});
 const profile = join(root, '.cache', `visual_chrome_${randomUUID()}`);
 const chrome = spawn('C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe', [
@@ -68,7 +69,7 @@ try {
     if (r.error) p.reject(Error(JSON.stringify(r.error))); else p.resolve(r.result);
   };
   await call('Page.enable'); await call('Runtime.enable');
-  for (const [prefix, width, height] of [['desktop',1440,1080],['mobile',390,844]]) {
+  for (const [prefix, width, height] of (reportMode ? [['desktop',1440,1080]] : [['desktop',1440,1080],['mobile',390,844]])) {
     await call('Emulation.setDeviceMetricsOverride', {width,height,deviceScaleFactor:1,mobile:prefix==='mobile'});
     await call('Page.navigate', {url:base});
     await until('document.getElementById("service-status")?.dataset.state === "ready"');
@@ -80,6 +81,12 @@ try {
     await evaluate('document.getElementById("method-select").value="all";document.getElementById("method-select").dispatchEvent(new Event("change"));document.getElementById("analyze-photo").click();true');
     await until('document.getElementById("model-results")?.children.length === 3 && !document.getElementById("prediction-results").hidden');
     await until('document.querySelectorAll("#model-results .score-row").length === 9');
+    if (reportMode) {
+      await evaluate('document.getElementById("photo-preview").style.visibility="hidden";const n=document.createElement("span");n.textContent="Validation photo omitted from public report";n.style.cssText="position:absolute;inset:42% 12%;text-align:center;font:14px system-ui;color:#596b84";document.getElementById("photo-stage").append(n);true');
+      const rect = await evaluate('(()=>{const r=document.querySelector(".model-result").getBoundingClientRect();return {x:r.x+scrollX,y:r.y+scrollY,width:r.width,height:r.height};})()');
+      const screenshot = await call('Page.captureScreenshot', {format:'png',captureBeyondViewport:true,clip:{...rect,scale:1}});
+      await writeFile(join(folder,'model_scores.png'),Buffer.from(screenshot.data,'base64'));
+    }
     await capture(`${prefix}_comparison`,width,height);
     await evaluate('location.hash="evaluation";true');
     await until('document.querySelectorAll("#eval-classification .chart-select button").length === 3');
@@ -90,7 +97,7 @@ try {
     await capture(`${prefix}_pipeline`,width,height);
   }
   if (errors.length) throw Error(JSON.stringify(errors));
-  await writeFile(join(folder,'render_manifest.json'),JSON.stringify({ok:true,captures,uncaught_errors:errors,scope:'Isolated headless Chrome, true 390px mobile viewport and 1440px desktop. Validation fixture only.'},null,2));
+  await writeFile(join(folder,'render_manifest.json'),JSON.stringify({ok:true,captures,uncaught_errors:errors,scope:reportMode ? 'Isolated headless Chrome, 1440px desktop; face photo hidden for public reporting. Validation fixture only.' : 'Isolated headless Chrome, true 390px mobile viewport and 1440px desktop. Validation fixture only.'},null,2));
   console.log(JSON.stringify({ok:true,captures:captures.length}));
 } finally {
   if (socket?.readyState === WebSocket.OPEN) {

@@ -158,6 +158,19 @@ def main():
             'reports/pretrained/evaluation/application_profile.json']
     hardware = read('hardware_acceptance.json') if (reports / 'hardware_acceptance.json').exists() else None
     physical_pending = [] if hardware and hardware['webcam']['status'] == 'user_confirmed_working' and hardware['phone']['status'] == 'not_required_by_user' else ['physical webcam/phone acceptance']
+    delivery = read('delivery/verification.json') if (reports / 'delivery/verification.json').exists() else None
+    deployment = read('deployment_status.json') if (reports / 'deployment_status.json').exists() else None
+    delivery_complete = bool(delivery and delivery.get('ok') and delivery.get('isolated_import_mode')
+        and all(delivery.get('checks', {}).values()) and delivery.get('files_verified') == 240
+        and delivery.get('cleanup', {}).get('port_closed'))
+    if delivery_complete:
+        package = json.loads((reports / 'delivery/package.json').read_text())
+        if sha256_file(ROOT / 'output/VisAge_Complete_Web_App_v0.4.0.zip') != delivery['package_sha256'] or package['sha256'] != delivery['package_sha256']:
+            raise ValueError('Verified fresh delivery archive changed.')
+        evidence += ['reports/pretrained/delivery/verification.json', 'reports/pretrained/delivery/package.json']
+    if deployment:
+        evidence += ['reports/pretrained/deployment_status.json']
+    hosting_complete = bool(deployment and deployment.get('vercel', {}).get('hosted_inference_verified'))
     write_json(reports / 'two_seed_activation.json', {'ok': True, 'completed_utc': utc_now(),
         'scope': 'The five user-approved post-training steps; six completed full-data runs only.',
         'steps': { '1_protocol_amendment': 'complete', '2_artifact_verification': 'complete',
@@ -171,8 +184,10 @@ def main():
         'pipeline_accepted': pipeline['accepted'], 'training_restarted': False,
         'original_protocol_and_protected_evidence_preserved': True, 'unfinished_seed44_preserved_and_excluded': True,
         'historical_rollback_zip_preserved': True, 'evidence_sha256': {p: sha256_file(ROOT / p) for p in evidence},
+        'fresh_delivery_verified': delivery_complete, 'deployment_status': deployment,
         'remaining_separate_scope': [*physical_pending, *([] if (reports / 'pilot_scope.json').exists() else ['independent consented-participant pilot']),
-            'public hosting', 'fresh delivery ZIP and isolated extraction', 'nine deferred supporting experiments']})
+            *([] if hosting_complete else ['Vercel hosted inference: awaiting team authorization and deployment verification']),
+            *([] if delivery_complete else ['fresh delivery ZIP and isolated extraction']), 'nine deferred supporting experiments (outside current delivery scope)']})
     print(json.dumps({'ok': True, 'default_method': selection['default_method'], 'steps_completed': 5}), flush=True)
 
 
