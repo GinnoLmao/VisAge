@@ -1,0 +1,45 @@
+{
+  "retrieved_utc": "2026-11-22T14:24:12.352958+00:00",
+  "license_text_repository_revision": "ab9b0904b43db6f4b67431efd8821feb821f1c8b",
+  "methods": {
+    "convnextv2_nano": {
+      "publisher": "timm/convnextv2_nano.fcmae_ft_in1k",
+      "revision": "fd83d9c986153f1bac0fc78368a17a66eb9c584e",
+      "weight_license_tag": "cc-by-nc-4.0",
+      "archived_text": "licenses/pretrained/CC-BY-NC-4.0.txt",
+      "license_text_source": "https://raw.githubusercontent.com/spdx/license-list-data/ab9b0904b43db6f4b67431efd8821feb821f1c8b/text/CC-BY-NC-4.0.txt",
+      "publisher_attribution": "See the exact model card and its authors and original weight source."
+    },
+    "efficientnetv2_s": {
+      "publisher": "timm/tf_efficientnetv2_s.in1k",
+      "revision": "3af791b42d7e895c9da9b5aa4ed4e6b648e4ac0b",
+      "weight_license_tag": "apache-2.0",
+      "archived_text": "licenses/pretrained/Apache-2.0.txt",
+      "license_text_source": "https://raw.githubusercontent.com/spdx/license-list-data/ab9b0904b43db6f4b67431efd8821feb821f1c8b/text/Apache-2.0.txt",
+      "publisher_attribution": "See the exact model card and its authors and original weight source."
+    },
+    "swinv2_tiny": {
+      "publisher": "timm/swinv2_tiny_window8_256.ms_in1k",
+      "revision": "9fc48f948b7a735e67e0a06a9fd5a57d9f5b26e2",
+      "weight_license_tag": "mit",
+      "archived_text": "licenses/pretrained/MIT.txt",
+      "license_text_source": "https://raw.githubusercontent.com/spdx/license-list-data/ab9b0904b43db6f4b67431efd8821feb821f1c8b/text/MIT.txt",
+      "publisher_attribution": "See the exact model card and its authors and original weight source."
+    }
+  },
+  "files": {
+    "licenses/pretrained/CC-BY-NC-4.0.txt": "cc97a2c4ff7723a1f25179dc7c18f676fa84191bbb36ea7d0061acaf3c102559",
+    "licenses/pretrained/convnextv2_nano/README.md": "5f6241e465962986419379a8db32cda48bfecb6593262d7325229ddf8acbebab",
+    "licenses/pretrained/convnextv2_nano/config.json": "b08513c0fe87a4fa858b56347c0c8ac73eb63a731e2aa8b04364014c93b99348",
+    "licenses/pretrained/convnextv2_nano/provenance.json": "fb142ecadb508c6a1142f48fa4da7cae0f08c26241906168efafa1c273b85b24",
+    "licenses/pretrained/Apache-2.0.txt": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff",
+    "licenses/pretrained/efficientnetv2_s/README.md": "d6f9e20f8adba8fe3953efa6423b6d8f95b1121e198956e2566cc82075f521d9",
+    "licenses/pretrained/efficientnetv2_s/config.json": "3a7310dac2ab01f44f8717a5f0b8d26762d8ea8f55d92a8fd5880e973d893cb4",
+    "licenses/pretrained/efficientnetv2_s/provenance.json": "47d3854d3b2c5066e07944fe281cd1b54bf7e727f2ce57309e2314ee3ff46828",
+    "licenses/pretrained/MIT.txt": "b05785f9f18e6716bab63424b11454513b9943a222595b70411009202fc592b5",
+    "licenses/pretrained/swinv2_tiny/README.md": "1bb22bbc7fe8a3024c57192e55a37be1ffdac9c3c5bcc979879f3a0279f7c2ff",
+    "licenses/pretrained/swinv2_tiny/config.json": "75b22a3513f40757680f3f3b204adee1aa751f07eb630ee46200ed2c8a22c767",
+    "licenses/pretrained/swinv2_tiny/provenance.json": "1b78e3f64d2ccfabbe7fbc11ddf54d5e4939bdb4db8a586b447d93f3d6fbc140"
+  },
+  "note": "Model-card license tags are preserved. This archive does not grant additional model or dataset permissions."
+}

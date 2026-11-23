@@ -1,0 +1,19 @@
+name: Source checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: python -m pip install -r requirements.txt pytest ruff httpx psutil
+      - run: python -m ruff check src scripts tests api
+      - run: python -m pytest tests/test_metrics.py tests/test_faces.py tests/test_image_formats.py tests/test_score_inference.py tests/test_api.py tests/test_web_ui.py -q
+      - run: node --test tests/web/core.test.mjs

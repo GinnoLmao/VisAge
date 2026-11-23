@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7fb">
+  <meta name="description" content="Compare three computer vision approaches to age-group estimation with VisAge. A private photo analysis workspace.">
+  <title>VisAge — Age-group workspace</title>
+  <link rel="icon" href="/assets/brand.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script type="module" src="/assets/app.js"></script>
+</head>
+<body>
+  <svg class="icon-definitions" aria-hidden="true"><defs>
+    <symbol id="i-scan" viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3m13-5h3a2 2 0 0 1 2 2v3M3 16v3a2 2 0 0 0 2 2h3m8 0h3a2 2 0 0 0 2-2v-3"/><path d="M8 10a4 4 0 0 1 8 0v2a4 4 0 0 1-8 0zM7 18a7 7 0 0 1 10 0"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 3v17h17M8 15l4-5 4 3 5-8"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-9h.01"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V3m-5 5 5-5 5 5M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="m8 5 1-2h6l1 2h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/><circle cx="12" cy="12" r="4"/></symbol>
+    <symbol id="i-photo" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1.5"/><path d="m3 17 6-6 4 4 3-3 5 5"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 2 8 3v6c0 5-4 8-8 11-4-3-8-6-8-11V5z"/><path d="m8 11 3 3 5-5"/></symbol>
+    <symbol id="i-compare" viewBox="0 0 24 24"><rect x="3" y="4" width="7" height="16" rx="2"/><rect x="14" y="4" width="7" height="16" rx="2"/><path d="M6 9h1m10 6h1"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 8a8 8 0 1 0 .5 6M20 3v5h-5"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></symbol>
+    <symbol id="i-switch" viewBox="0 0 24 24"><path d="M3 7h17m-4-4 4 4-4 4M21 17H4m4-4-4 4 4 4"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 3 2.7 6.3L21 12l-6.3 2.7L12 21l-2.7-6.3L3 12l6.3-2.7z"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 10 6-10 6L2 9zM3 14l9 5 9-5M5 19l7 4 7-4"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  </defs></svg>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <noscript><div class="noscript">Enable JavaScript to use the camera, upload photos and view the evaluation dashboard.</div></noscript>
+  <aside class="sidebar" aria-label="Main navigation">
+    <a href="#analyze" class="brand" aria-label="VisAge home"><span class="brand-mark"><svg><use href="#i-scan"/></svg></span><span>VisAge<span class="brand-period">.</span></span></a>
+    <span class="workspace-label">WORKSPACE</span>
+    <nav class="main-nav">
+      <a href="#analyze" data-route="analyze" class="nav-link" aria-current="page"><svg class="icon"><use href="#i-scan"/></svg><span>Analyze a face</span></a>
+      <a href="#evaluation" data-route="evaluation" class="nav-link"><svg class="icon"><use href="#i-chart"/></svg><span>Evaluation</span></a>
+      <a href="#about" data-route="about" class="nav-link"><svg class="icon"><use href="#i-info"/></svg><span>How it works</span></a>
+    </nav>
+    <div class="sidebar-bottom"><div class="sidebar-note"><svg class="icon"><use href="#i-shield"/></svg><strong>Your photo stays private</strong><p>Processed in memory. Never saved or added to training.</p></div></div>
+  </aside>
+  <div class="app-shell">
+    <header class="topbar"><div class="breadcrumb"><span>Workspace</span><span class="breadcrumb-slash">/</span><strong id="route-label">Face analysis</strong></div><div class="service-status" id="service-status" data-state="connecting" role="status"><span class="status-dot"></span><span id="service-status-text">Connecting to models</span><button id="reconnect" class="status-retry" hidden>Retry</button></div></header>
+    <main id="main-content" tabindex="-1">
+      <section id="view-analyze" class="view" aria-labelledby="analyze-title">
+        <div class="page-heading"><div><span class="eyebrow">COMPUTER VISION, IN PERSPECTIVE</span><h1 id="analyze-title">One face. Three perspectives.</h1><p>Explore how three different models estimate an age group from the same face.</p></div></div>
+        <div class="analysis-grid">
+          <section class="panel input-panel" aria-labelledby="input-title">
+            <div class="panel-heading"><div><h2 id="input-title">Start with a photo</h2><p>A clear, front-facing image works best.</p></div><span class="step-tag">INPUT</span></div>
+            <div class="source-tabs" role="tablist" aria-label="Photo source"><button role="tab" aria-selected="true" aria-controls="source-panel" id="tab-upload" data-source="upload"><svg class="icon"><use href="#i-upload"/></svg>Upload photo</button><button role="tab" aria-selected="false" aria-controls="source-panel" id="tab-camera" data-source="camera" tabindex="-1"><svg class="icon"><use href="#i-camera"/></svg>Use camera</button></div>
+            <div id="source-panel" role="tabpanel" aria-labelledby="tab-upload">
+              <div class="drop-zone" id="drop-zone">
+                <div id="upload-empty" class="empty-upload"><div class="upload-art" aria-hidden="true"><div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div><div class="art-photo"><svg><use href="#i-photo"/></svg><span class="art-plus">+</span></div></div><h3>Your next insight starts here</h3><p>Drag and drop a photo, or choose one from your device.</p><button type="button" id="browse-photo" class="button primary"><svg class="icon"><use href="#i-upload"/></svg>Choose a photo</button><span class="file-hint">JPEG, PNG, WebP, HEIC/HEIF, AVIF, BMP, TIFF · Up to 8 MiB</span></div>
+                <div id="camera-empty" class="camera-empty" hidden><span class="large-icon"><svg><use href="#i-camera"/></svg></span><h3>A photo, in the moment</h3><p>Start your camera, check the preview,<br>then capture when you’re ready.</p><button type="button" id="start-camera" class="button primary"><svg class="icon"><use href="#i-camera"/></svg>Start camera</button><span class="file-hint">Camera only. No audio is requested.</span></div>
+                <div id="photo-stage" class="photo-stage" hidden><img id="photo-preview" alt="Selected photo for age-group estimation"><svg id="face-overlay" class="face-overlay" aria-label="Detected face boxes"></svg><span class="preview-label" id="preview-label">Selected photo</span><button id="remove-photo" class="image-remove" aria-label="Remove photo and clear results"><svg class="icon"><use href="#i-close"/></svg></button></div>
+                <div id="video-stage" class="video-stage" hidden><video id="camera-preview" autoplay muted playsinline aria-label="Live camera preview"></video><div class="camera-guide" aria-hidden="true"></div><span class="preview-label">Camera preview</span><button id="stop-camera" class="image-remove" aria-label="Stop camera"><svg class="icon"><use href="#i-close"/></svg></button></div>
+                <div id="input-busy" class="input-busy" hidden><span class="spinner" aria-hidden="true"></span><span id="input-busy-text">Finding faces…</span><button id="cancel-request" class="text-button">Cancel</button></div>
+              </div>
+              <input id="photo-input" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif,image/avif,image/bmp,image/tiff,.jpg,.jpeg,.png,.webp,.heic,.heif,.avif,.bmp,.tif,.tiff" hidden>
+              <div class="camera-controls" id="camera-controls" hidden><button id="capture-photo" class="button primary"><svg class="icon"><use href="#i-camera"/></svg>Capture photo</button><button id="switch-camera" class="button secondary"><svg class="icon"><use href="#i-switch"/></svg>Switch camera</button></div>
+              <div class="photo-details" id="photo-details" hidden><div class="photo-file"><span class="file-icon"><svg class="icon"><use href="#i-photo"/></svg></span><div><strong id="file-name"></strong><span id="file-meta"></span></div></div><button id="replace-photo" class="text-button">Change photo</button></div>
+              <div id="face-selection" class="face-selection" hidden><div class="selection-heading"><strong id="face-count">Choose a face</strong><span id="selection-help">Select a box or a face below.</span></div><div id="face-buttons" class="face-buttons" aria-label="Select a detected face"></div></div>
+              <div id="input-error" class="notice error-notice" role="alert" hidden><svg class="icon"><use href="#i-info"/></svg><div><strong id="input-error-title"></strong><p id="input-error-message"></p></div></div>
+              <div class="analysis-controls"><div class="method-field"><label for="method-select">Analysis method</label><div class="select-wrap"><select id="method-select"><option value="convnextv2_nano">ConvNeXt V2 Nano</option><option value="efficientnetv2_s">EfficientNetV2-S</option><option value="swinv2_tiny">Swin Transformer V2 Tiny</option><option value="all">Compare all three</option></select><svg class="icon"><use href="#i-chevron"/></svg></div></div><button id="analyze-photo" class="button primary analyze-button" disabled><svg class="icon"><use href="#i-spark"/></svg><span id="analyze-button-text">Analyze selected face</span></button></div>
+            </div>
+            <div class="input-footer"><svg class="icon"><use href="#i-shield"/></svg><span>Your photo is processed for this request and is not stored.</span></div>
+          </section>
+          <div class="results-column">
+            <section class="panel results-panel" aria-labelledby="results-title"><div class="panel-heading"><div><h2 id="results-title">Age-group estimates</h2><p id="results-subtitle">A shared face. A fair comparison.</p></div><span class="step-tag">RESULTS</span></div>
+              <div id="results-empty" class="results-empty"><div class="results-empty-icon"><svg><use href="#i-scan"/></svg></div><h3>A little perspective awaits</h3><p>Choose a photo and select a face.<br>Your model estimates will appear here.</p><div class="empty-models"><div><span class="model-mini convnext-tone"><svg class="icon"><use href="#i-layers"/></svg></span><span>ConvNeXt V2 Nano</span><span class="placeholder-dash">—</span></div><div><span class="model-mini efficient-tone"><svg class="icon"><use href="#i-grid"/></svg></span><span>EfficientNetV2-S</span><span class="placeholder-dash">—</span></div><div><span class="model-mini swin-tone"><svg class="icon"><use href="#i-spark"/></svg></span><span>Swin Transformer V2 Tiny</span><span class="placeholder-dash">—</span></div></div></div>
+              <div id="results-loading" class="results-loading" role="status" hidden><span class="spinner"></span><h3>Looking at the same face</h3><p id="prediction-progress">Running the selected method…</p></div>
+              <div id="prediction-results" class="prediction-results" hidden><div id="result-context" class="result-context"></div><div id="model-results"></div><div id="request-timing" class="request-timing"></div><button id="compare-all" class="button secondary full-width" hidden><svg class="icon"><use href="#i-compare"/></svg>Compare all three methods</button><div id="staff-guidance" class="staff-guidance"></div></div>
+            </section>
+            <section class="guidance-card"><div class="guidance-icon"><svg class="icon"><use href="#i-info"/></svg></div><div><h3>Support for a human decision</h3><p>Age-group estimates can support staff ID checks for age-restricted purchases and senior-discount requests. Always confirm eligibility with the required identification.</p><a href="#about">Understand the approach</a></div></section>
+          </div>
+        </div>
+        <div class="workflow-strip"><div><span class="workflow-icon"><svg class="icon"><use href="#i-photo"/></svg></span><div><strong>One selected face</strong><span>Consistent detection and alignment</span></div></div><div><span class="workflow-icon"><svg class="icon"><use href="#i-layers"/></svg></span><div><strong>Three different approaches</strong><span>Two CNNs and a hierarchical Transformer</span></div></div><div><span class="workflow-icon"><svg class="icon"><use href="#i-chart"/></svg></span><div><strong>Measured, transparent results</strong><span>Explore the evaluation evidence</span></div></div></div>
+      </section>
+      <section id="view-evaluation" class="view" aria-labelledby="evaluation-title" hidden>
+        <div class="page-heading"><div><span class="eyebrow">THE EVIDENCE BEHIND THE ESTIMATES</span><h1 id="evaluation-title">Performance, with context.</h1><p>Explore offline benchmarks for the loaded models and shared face pipeline.</p></div><button id="refresh-evaluation" class="button secondary"><svg class="icon"><use href="#i-refresh"/></svg>Refresh metrics</button></div>
+        <div class="evaluation-tabs" role="tablist" aria-label="Evaluation task"><button role="tab" id="eval-classification-tab" aria-controls="eval-classification" aria-selected="true" data-eval="classification">Age-group models</button><button role="tab" id="eval-detection-tab" aria-controls="eval-detection" aria-selected="false" tabindex="-1" data-eval="detection">Face detection</button><button role="tab" id="eval-pipeline-tab" aria-controls="eval-pipeline" aria-selected="false" tabindex="-1" data-eval="pipeline">Full pipeline</button></div>
+        <div id="evaluation-status" role="status" class="evaluation-status"><span class="spinner"></span>Loading evaluation records…</div>
+        <div id="evaluation-error" class="notice error-notice" role="alert" hidden></div>
+        <div id="evaluation-content" hidden><section id="eval-classification" role="tabpanel" aria-labelledby="eval-classification-tab"></section><section id="eval-detection" role="tabpanel" aria-labelledby="eval-detection-tab" hidden></section><section id="eval-pipeline" role="tabpanel" aria-labelledby="eval-pipeline-tab" hidden></section></div>
+      </section>
+      <section id="view-about" class="view" aria-labelledby="about-title" hidden><div class="page-heading"><div><span class="eyebrow">A CLEARER VIEW OF VISAGE</span><h1 id="about-title">Built to compare. Easy to explore.</h1><p>An application for understanding three approaches to age-group classification.</p></div></div>
+        <section class="panel about-intro"><span class="about-mark"><svg><use href="#i-scan"/></svg></span><div><h2>Appearance offers an estimate.</h2><p>VisAge classifies a selected face into <strong>Under 18</strong>, <strong>18–59</strong>, or <strong>60+</strong>. It helps demonstrate how computer vision can support staff ID-check guidance. A person’s appearance does not establish their actual age or eligibility.</p></div></section>
+        <div class="about-models"><article class="panel"><span class="model-mini convnext-tone"><svg class="icon"><use href="#i-layers"/></svg></span><span class="eyebrow">MODERN CONVOLUTION</span><h2>ConvNeXt V2 Nano</h2><p>A published ConvNeXt V2 Nano backbone with FCMAE pretraining and ImageNet adaptation. A replacement classifier estimates three age groups.</p><span class="model-kind">Pretrained backbone · Three-class softmax head</span></article><article class="panel"><span class="model-mini efficient-tone"><svg class="icon"><use href="#i-grid"/></svg></span><span class="eyebrow">EFFICIENT CONVOLUTION</span><h2>EfficientNetV2-S</h2><p>Published EfficientNetV2-S weights adapted with a three-class head, evaluated using the same data partitions and training budget.</p><span class="model-kind">Pretrained backbone · Three-class softmax head</span></article><article class="panel"><span class="model-mini swin-tone"><svg class="icon"><use href="#i-spark"/></svg></span><span class="eyebrow">HIERARCHICAL TRANSFORMER</span><h2>Swin Transformer V2 Tiny</h2><p>Published Swin Transformer V2 Tiny weights using shifted-window attention, adapted for the same three age groups.</p><span class="model-kind">Pretrained backbone · Three-class softmax head</span></article></div>
+        <div class="about-bottom"><section class="panel"><h2>How a photo becomes a result</h2><ul class="process-list"><li><span class="process-mark"><svg class="icon"><use href="#i-upload"/></svg></span><div><strong>Choose or capture a photo</strong><p>Upload a still image or capture one with your camera.</p></div></li><li><span class="process-mark"><svg class="icon"><use href="#i-scan"/></svg></span><div><strong>Select a detected face</strong><p>One shared, aligned face crop goes to every selected method.</p></div></li><li><span class="process-mark"><svg class="icon"><use href="#i-chart"/></svg></span><div><strong>Compare estimates and timing</strong><p>Explore the differences, then verify age with valid identification.</p></div></li></ul></section><section class="panel privacy-panel"><svg class="privacy-emblem"><use href="#i-shield"/></svg><h2>Privacy is part of the workflow.</h2><p>Photos are processed in memory for the request. They are not saved, added to training, or included in the evaluation dashboard.</p><p>Camera access starts only when requested. Leaving camera mode or this page stops its video tracks.</p><p class="small-copy">No identity recognition, liveness verification or automatic purchase/discount approval is performed.</p></section></div>
+      </section>
+      <footer class="page-footer"><span>VisAge · Computer vision</span><span>Estimates support staff review. Valid identification confirms eligibility.</span></footer>
+    </main>
+  </div>
+  <div id="announcer" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

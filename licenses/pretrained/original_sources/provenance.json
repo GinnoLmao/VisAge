@@ -1,0 +1,34 @@
+{
+  "retrieved_utc": "2026-11-22T15:00:09.955096+00:00",
+  "repositories": {
+    "facebookresearch/ConvNeXt-V2": {
+      "revision": "2553895753323c6fe0b2bf390683f5ea358a42b9",
+      "url": "https://raw.githubusercontent.com/facebookresearch/ConvNeXt-V2/2553895753323c6fe0b2bf390683f5ea358a42b9/LICENSE",
+      "path": "licenses/pretrained/original_sources/facebookresearch_ConvNeXt-V2_LICENSE.txt",
+      "sha256": "9ab7947f327be897e841ce58b90996c4b814c35127897b383f17616510115b9b",
+      "bytes": 20566
+    },
+    "tensorflow/tpu": {
+      "revision": "3f739670a4b455e97100c25527f2c5570f288494",
+      "url": "https://raw.githubusercontent.com/tensorflow/tpu/3f739670a4b455e97100c25527f2c5570f288494/LICENSE",
+      "path": "licenses/pretrained/original_sources/tensorflow_tpu_LICENSE.txt",
+      "sha256": "d7c9068d896188264b60827b8cd1e25fdb9f5b5cad0b1589e90b96c87729c404",
+      "bytes": 11416
+    },
+    "microsoft/Swin-Transformer": {
+      "revision": "f82860bfb5225915aca09c3227159ee9e1df874d",
+      "url": "https://raw.githubusercontent.com/microsoft/Swin-Transformer/f82860bfb5225915aca09c3227159ee9e1df874d/LICENSE",
+      "path": "licenses/pretrained/original_sources/microsoft_Swin-Transformer_LICENSE.txt",
+      "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+      "bytes": 1141
+    },
+    "huggingface/pytorch-image-models": {
+      "revision": "b4f423c19f778672f875e0948f296322c775f24b",
+      "url": "https://raw.githubusercontent.com/huggingface/pytorch-image-models/b4f423c19f778672f875e0948f296322c775f24b/LICENSE",
+      "path": "licenses/pretrained/original_sources/huggingface_pytorch-image-models_LICENSE.txt",
+      "sha256": "71b111620fa32c17a80ccd6db2da759d31a591e497d8b5f382174f59d1b59d49",
+      "bytes": 11343
+    }
+  },
+  "note": "Original software source copyright notices and licenses. The separate publisher model cards remain authoritative evidence of the selected weight license tags; software notices do not replace or broaden weight/dataset terms."
+}

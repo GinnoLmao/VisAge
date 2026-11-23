@@ -1,0 +1,31 @@
+{
+  "policy": "yunet_training_five_point_v3",
+  "manifest_sha256": "ec0391e19de5dfcc40a909a9980815b513f39db65e5ec6909baaa3887e55a922",
+  "training_fit_sha256": "2de2c2f1b7ddcd7ab1c730fbfe209609855bab5227f90648af45598a740bb826",
+  "template_normalized": [
+    [
+      0.29279454231262203,
+      0.28809377670288083
+    ],
+    [
+      0.6810825729370118,
+      0.29309667587280275
+    ],
+    [
+      0.47622774124145506,
+      0.4994986152648926
+    ],
+    [
+      0.3146715354919434,
+      0.6784325408935548
+    ],
+    [
+      0.642569808959961,
+      0.6859370422363281
+    ]
+  ],
+  "selection_rule": "Lower mean absolute RGB reconstruction error against resized original training crops; no age-performance selection.",
+  "uses_age_labels": false,
+  "min_blur_variance": 1.0,
+  "quality_fit_sha256": "4f09e8c6450c92797c9265b16efcb0e318775c490e8047046dce2f14f972638f"
+}

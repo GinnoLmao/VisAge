@@ -1,0 +1,16 @@
+{
+  "status": "awaiting_consented_labeled_local_photos",
+  "user_decision": "No pilot data yet; prepare the protocol",
+  "labels": {"0": "Under 18", "1": "18-59", "2": "60+"},
+  "label_source": "Reliable age-group information obtained with permission; never predicted ages or inferred birthdays.",
+  "consent": "Record voluntary permission outside the repository. For minors, obtain appropriate guardian permission and participant assent. Do not store names, identity documents or birthdays in the manifest.",
+  "split": "Assign participants to development or holdout before processing. Every photo of one participant must stay in one split; labels must agree. Reserve holdout until preprocessing, model artifacts and operating settings are fixed.",
+  "recommended_holdout_target": "At least 30 distinct participants per age group, with realistic lighting/devices/pose variation. A small convenience sample is exploratory and cannot establish population accuracy.",
+  "photo_policy": "Use ordinary photos representing the intended app, not only preselected successful face crops. Record failures and multiple-face selection. Keep photos private and outside version control/distribution packages.",
+  "quality_accounting": "Report attempted/accepted/rejected images and reasons, coverage, conditional classification metrics and correct predictions divided by every attempted image. Never silently drop rejected photos.",
+  "reporting": "Report per-class metrics, under-18 and senior boundary errors, participant/sample counts, image correlation and collection limits. No model result establishes chronological age or entitlement.",
+  "validation_command": "python scripts/run_local_pilot.py --manifest PATH_TO_LABELS --photo-root PATH_TO_PHOTOS --output-dir PATH_TO_NEW_OUTPUT --validate-only",
+  "execution_command": "python scripts/run_local_pilot.py --manifest PATH_TO_LABELS --photo-root PATH_TO_PHOTOS --output-dir PATH_TO_NEW_OUTPUT --split development",
+  "holdout_execution": "After freezing the design, use the same command with --split holdout and a fresh output directory. Do not tune on its results.",
+  "results": null
+}

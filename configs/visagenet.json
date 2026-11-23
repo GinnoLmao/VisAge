@@ -1,0 +1,9 @@
+{
+  "method": "visagenet", "seed": 42, "device": "cuda", "threads": 4,
+  "manifest": "data/processed/manifest.csv", "raw_dir": "data/raw/UTKFace",
+  "output_dir": "artifacts/visagenet", "batch_size": 64, "workers": 0,
+  "epochs": 25, "min_epochs": 10, "patience": 6,
+  "learning_rate": 0.001, "weight_decay": 0.0005,
+  "augmentation_backend": "tensor_batch_v1", "tensor_cache_dir": "data/cache/neural_faces",
+  "model_config": {"head_type": "corn", "dropout": 0.2}
+}

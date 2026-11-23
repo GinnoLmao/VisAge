@@ -1,0 +1,52 @@
+{
+  "repository": "timm/tf_efficientnetv2_s.in1k",
+  "revision": "3af791b42d7e895c9da9b5aa4ed4e6b648e4ac0b",
+  "sha256": "b8a4b5462df66612e3c0e63781f73f7890ccdac8bcd950b4fc0ba0c0f29bda1f",
+  "bytes": 86523256,
+  "relative_path": ".cache/pretrained_weights/efficientnetv2_s/model.safetensors",
+  "license": "apache-2.0",
+  "source_url": "https://huggingface.co/timm/tf_efficientnetv2_s.in1k/resolve/3af791b42d7e895c9da9b5aa4ed4e6b648e4ac0b/model.safetensors",
+  "retrieved_utc": "2026-11-22T13:47:59.219030+00:00",
+  "config_sha256": "3a7310dac2ab01f44f8717a5f0b8d26762d8ea8f55d92a8fd5880e973d893cb4",
+  "model_card_sha256": "d6f9e20f8adba8fe3953efa6423b6d8f95b1121e198956e2566cc82075f521d9",
+  "configuration": {
+    "architecture": "tf_efficientnetv2_s",
+    "num_classes": 1000,
+    "num_features": 1280,
+    "pretrained_cfg": {
+      "tag": "in1k",
+      "custom_load": false,
+      "input_size": [
+        3,
+        300,
+        300
+      ],
+      "test_input_size": [
+        3,
+        384,
+        384
+      ],
+      "fixed_input_size": false,
+      "interpolation": "bicubic",
+      "crop_pct": 1.0,
+      "crop_mode": "center",
+      "mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "std": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "num_classes": 1000,
+      "pool_size": [
+        10,
+        10
+      ],
+      "first_conv": "conv_stem",
+      "classifier": "classifier"
+    }
+  }
+}

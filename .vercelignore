@@ -1,0 +1,15 @@
+.venv
+.git
+data
+output
+tmp
+build
+notebooks
+.pytest_cache
+.ruff_cache
+**/__pycache__
+.cache
+artifacts
+reports
+!reports/pretrained/evaluation
+!reports/pretrained/face_pipeline_validation.json

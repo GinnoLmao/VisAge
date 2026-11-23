@@ -1,0 +1,13 @@
+{
+  "scope": "Additional operational acceptance after the frozen validation-only model study; no public deployment or new age-test inference.",
+  "selection": "Only the paired-seed-qualified VisAgeNet candidate may replace its original slot; ConvNeXt's single-seed optimization remains exploratory.",
+  "serving_seed": 42,
+  "pipeline_comparison": "Use the identical frozen validation inputs and final shared crop/quality policy for baseline and candidate; accepted sample IDs and crop checksums must match exactly.",
+  "pipeline_macro_f1_drop_max": 0.005,
+  "pipeline_minor_error_increase_max": 0.01,
+  "pipeline_senior_recall_drop_max": 0.01,
+  "latency": "Measure candidate and baseline sequentially with training idle; no claim from concurrent functional smoke timings. Candidate mean per-method preprocessing/inference may increase at most25% plus2ms for measurement variation.",
+  "activation": "Prepare a separate artifact bundle, verify all hashes, run the shared-pipeline and CPU/CUDA/API checks, and activate only if every gate passes. Preserve all original and research artifacts.",
+  "fallback": "Keep the original models active if any model-study or operational gate fails. Record the outcome and measured tradeoffs; no claim of guaranteed accuracy gains.",
+  "local_pilot": "Pending consented labeled participant photos; this acceptance uses known validation data and does not establish independent camera-domain accuracy."
+}

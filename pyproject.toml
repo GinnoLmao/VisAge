@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "visage-cv"
+version = "0.4.0"
+description = "VisAge three-pretrained-model age-group research and local web application"
+requires-python = ">=3.11"
+dependencies = ["numpy>=2.0", "scipy", "pillow==13.0.0", "pillow-heif==1.8.1", "torch>=2.7", "torchvision", "timm==1.0.31", "safetensors>=0.4", "matplotlib", "pyyaml", "tqdm", "opencv-python-headless>=4.10", "fastapi>=0.115", "uvicorn>=0.30", "truststore>=0.10"]
+
+[project.optional-dependencies]
+dev = ["pytest", "ruff", "nbformat", "nbclient", "ipykernel", "httpx>=0.27", "psutil>=7"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+visage = ["web/*.html", "web/*.css", "web/*.js", "web/*.svg"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E9", "F63", "F7", "F82"]

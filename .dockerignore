@@ -1,0 +1,10 @@
+.git
+.venv
+.cache
+data
+artifacts
+reports
+output
+tmp
+build
+**/__pycache__

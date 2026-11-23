@@ -1,0 +1,49 @@
+{
+  "repository": "timm/swinv2_tiny_window8_256.ms_in1k",
+  "revision": "9fc48f948b7a735e67e0a06a9fd5a57d9f5b26e2",
+  "sha256": "c47f52b4556ff4436aa9502f5efbc93aac77fdab42d9d70dd845931757ff5d65",
+  "bytes": 114918618,
+  "relative_path": ".cache/pretrained_weights/swinv2_tiny/model.safetensors",
+  "license": "mit",
+  "source_url": "https://huggingface.co/timm/swinv2_tiny_window8_256.ms_in1k/resolve/9fc48f948b7a735e67e0a06a9fd5a57d9f5b26e2/model.safetensors",
+  "retrieved_utc": "2026-11-22T13:48:15.393505+00:00",
+  "config_sha256": "75b22a3513f40757680f3f3b204adee1aa751f07eb630ee46200ed2c8a22c767",
+  "model_card_sha256": "1bb22bbc7fe8a3024c57192e55a37be1ffdac9c3c5bcc979879f3a0279f7c2ff",
+  "configuration": {
+    "architecture": "swinv2_tiny_window8_256",
+    "num_classes": 1000,
+    "num_features": 768,
+    "global_pool": "avg",
+    "pretrained_cfg": {
+      "tag": "ms_in1k",
+      "custom_load": false,
+      "input_size": [
+        3,
+        256,
+        256
+      ],
+      "fixed_input_size": true,
+      "interpolation": "bicubic",
+      "crop_pct": 0.9,
+      "crop_mode": "center",
+      "mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "num_classes": 1000,
+      "pool_size": [
+        8,
+        8
+      ],
+      "first_conv": "patch_embed.proj",
+      "classifier": "head.fc",
+      "license": "mit"
+    }
+  }
+}
